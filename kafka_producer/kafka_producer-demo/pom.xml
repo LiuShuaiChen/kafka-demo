@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.alice</groupId>
-  <artifactId>kafka_producer-demo</artifactId>
+  <artifactId>kafka_producer_demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 

@@ -6,3 +6,5 @@ IP:192.168.126.128
 
 MySQL:192.168.126.128
 
+kafka
+/usr/local/kafka/kafka_2.12-2.0.1

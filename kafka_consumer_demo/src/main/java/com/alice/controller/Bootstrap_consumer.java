@@ -1,17 +1,23 @@
 package com.alice.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+import com.alibaba.fastjson.JSON;
+import com.alice.entity.Student;
+
 public class Bootstrap_consumer {
 
 	public static void main(String[] args) {
+
 		Properties properties = new Properties();
-		properties.put("bootstrap.servers", "192.168.126.128:9092");
+		properties.put("bootstrap.servers", "192.168.126.200:9092");
 		properties.put("group.id", "student-group");
 		properties.put("enable.auto.commit", "true");
 		properties.put("auto.commit.interval.ms", "1000");
@@ -21,13 +27,14 @@ public class Bootstrap_consumer {
 		properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
 		KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
-		kafkaConsumer.subscribe(Arrays.asList("alice"));
+		kafkaConsumer.subscribe(Arrays.asList("student"));
 
 		while (true) {
 			ConsumerRecords<String, String> records = kafkaConsumer.poll(100);
 			for (ConsumerRecord<String, String> record : records) {
 				System.out.printf("offset = %d, value = %s", record.offset(), record.value());
-				System.out.println();
+				Student parseObject = JSON.parseObject(record.value(), Student.class);
+				System.out.println(parseObject.toString());
 			}
 		}
 

@@ -27,14 +27,14 @@ public class Bootstrap_produmer {
 		producer = new KafkaProducer<String, String>(properties);
 
 		try {
-			for (int i = 10; i < 1000000; i++) {
+			for (int i = 10; i < 1000; i++) {
 				Student student = new Student();
 				student.setId(i);
 				student.setName("niklaus_" + i);
 				student.setAge(i);
 				student.setAddress("china_" + i);
 				String stuJson = JSON.toJSON(student).toString();
-				producer.send(new ProducerRecord<String, String>("alice", stuJson.toString()));
+				producer.send(new ProducerRecord<String, String>("student", stuJson.toString()));
 				System.out.println(stuJson.toString());
 			}
 		} catch (Exception e) {
@@ -43,7 +43,6 @@ public class Bootstrap_produmer {
 			producer.close();
 			System.out.println("over");
 		}
-
 	}
 
 }

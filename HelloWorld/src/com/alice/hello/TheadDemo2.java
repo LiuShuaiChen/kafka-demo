@@ -2,6 +2,7 @@ package com.alice.hello;
 
 /**
  * 守护线程
+ * 设置子线程位守护线程,当主线程进入死亡状态时,其守护线程也被进入死亡状态
  * 
  * @author alice
  *

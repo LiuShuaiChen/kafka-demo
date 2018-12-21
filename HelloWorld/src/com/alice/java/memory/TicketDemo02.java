@@ -17,8 +17,19 @@ public class TicketDemo02{
 		ThreadDemo02 threadDemo03 = new ThreadDemo02();
 		ThreadDemo02 threadDemo04 = new ThreadDemo02();
 		ThreadDemo02 threadDemo05 = new ThreadDemo02();
-		
+
+		//固定大小线程池
 		ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
+		
+		//单任务线程池
+//		ExecutorService fixedThreadPool = Executors.newSingleThreadExecutor();
+		
+		//可变尺寸线程池
+//		ExecutorService fixedThreadPool = Executors.newCachedThreadPool();
+		
+//		延迟连接池，newScheduledThreadPool
+//		ExecutorService fixedThreadPool = Executors.newScheduledThreadPool(10);
+		
 		
 		fixedThreadPool.execute(threadDemo01);
 		fixedThreadPool.execute(threadDemo02);
